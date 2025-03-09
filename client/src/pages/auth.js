@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 export const Auth = () => {
   return (
     <div className="auth">
-      <login />
-      <register />
+      <Login />
+      <Register />
     </div>
   );
 };
@@ -24,7 +24,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const result = await axios.post("https://ey-gds-mern-recipe-app.onrender.com/auth/login", {
+      const result = await axios.post("https://mern-recipe-app1-server.onrender.com/auth/login", {
         username,
         password,
       });
@@ -75,7 +75,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("https://ey-gds-mern-recipe-app.onrender.com/auth/register", {
+      await axios.post("https://mern-recipe-app1-server.onrender.com/auth/register", {
         username,
         password,
       });
