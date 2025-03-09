@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: green; /* Changed background color to green */
+  background-color: green; /* Background color */
 }
 
 /* App Container */
@@ -23,46 +23,48 @@ h3 {
   margin-top: 20px;
 }
 
-/* Authentication Container */
-.auth {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f2f2f2;
-}
-
-.auth-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
-}
-
 /* Main Content Container */
 .container {
   background: white;
   padding: 20px;
-  max-width: 900px;
+  max-width: 1200px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   margin: 20px auto;
 }
 
-/* Input Fields */
-input {
+/* Recipe Grid - Strictly 3 Items Per Row */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Always 3 items per row */
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Recipe Cards */
+.recipe-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  text-align: center;
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  height: 350px; /* Ensures all cards have the same height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Recipe Images */
+.recipe-image {
+  width: 100%;
+  height: 180px; /* Fixed height for uniform images */
+  object-fit: cover; /* Ensures images maintain aspect ratio while filling space */
+  border-radius: 8px;
 }
 
 /* Buttons */
@@ -84,24 +86,17 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Save Recipe Button Active */
+/* Save Recipe Button */
 button:disabled {
-  background-color: #ff00a6;
-  cursor: pointer;
-}
-
-/* Form Group */
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+  background-color: gray;
+  cursor: not-allowed;
 }
 
 /* Navbar */
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: blue; /* Changed navbar color to pink */
+  background-color: pink;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,80 +113,18 @@ button:disabled {
 
 .navbar a:hover {
   scale: 1.1;
-  border-bottom: 2px solid black;
+  border-bottom: 2px dotted red;
 }
 
-/* Recipe List */
-.create-recipe {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  width: 320px;
+/* Responsive Design */
+@media (max-width: 900px) {
+  .recipe-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
+  }
 }
 
-.create-recipe form {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Grid Layout for Recipe Cards (Always Three Items in a Row) */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Ensuring always three items per row */
-  gap: 15px;
-  max-width: 1200px;
-}
-
-li {
-  border: 1px solid black;
-  padding: 15px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  width: 100%;
-  height: 250px; /* Ensuring all items have the same height */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Images */
-img {
-  max-width: 100%;
-  height: 150px; /* Set fixed height for images to ensure uniformity */
-  border-radius: 8px;
-}
-
-/* Text */
-p {
-  font-size: 14px;
-  text-align: justify;
-  max-width: 400px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 0;
-}
-
-label {
-  font-weight: bold;
-  margin-bottom: 5px;
+@media (max-width: 600px) {
+  .recipe-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 item per row on small screens */
+  }
 }
