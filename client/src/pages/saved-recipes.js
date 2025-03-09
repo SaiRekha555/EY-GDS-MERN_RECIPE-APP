@@ -18,8 +18,11 @@ export const SavedRecipes = () => {
       }
     };
 
-    fetchSavedRecipes();
-  }, []);
+    if (userID) {
+      fetchSavedRecipes();
+    }
+  }, [userID]); // Make sure it updates when userID changes
+
   return (
     <div>
       <h1>Saved Recipes</h1>
