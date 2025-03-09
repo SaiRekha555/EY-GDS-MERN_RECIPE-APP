@@ -1,12 +1,12 @@
-/* Global Styles */
+/* ===== Global Styles ===== */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: green; /* Background color */
+  background-color: light-green; /* Background color */
 }
 
-/* App Container */
+/* ===== App Container ===== */
 .App {
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@ body {
   align-items: center;
 }
 
-/* Header */
+/* ===== Header ===== */
 h3 {
   color: #007bff;
   text-align: center;
@@ -23,7 +23,7 @@ h3 {
   margin-top: 20px;
 }
 
-/* Main Content Container */
+/* ===== Main Content Container ===== */
 .container {
   background: white;
   padding: 20px;
@@ -34,7 +34,7 @@ h3 {
   margin: 20px auto;
 }
 
-/* Recipe Grid - Strictly 3 Items Per Row */
+/* ===== Recipe Grid - Strictly 3 Items Per Row ===== */
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Always 3 items per row */
@@ -44,7 +44,7 @@ h3 {
   padding: 20px;
 }
 
-/* Recipe Cards */
+/* ===== Recipe Cards ===== */
 .recipe-card {
   background: white;
   border-radius: 8px;
@@ -59,7 +59,7 @@ h3 {
   align-items: center;
 }
 
-/* Recipe Images */
+/* ===== Recipe Images ===== */
 .recipe-image {
   width: 100%;
   height: 180px; /* Fixed height for uniform images */
@@ -67,7 +67,7 @@ h3 {
   border-radius: 8px;
 }
 
-/* Buttons */
+/* ===== Buttons ===== */
 button {
   width: 100%;
   padding: 10px;
@@ -86,17 +86,17 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Save Recipe Button */
+/* ===== Save Recipe Button ===== */
 button:disabled {
   background-color: gray;
   cursor: not-allowed;
 }
 
-/* Navbar */
+/* ===== Navbar ===== */
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: pink;
+  background-color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,10 +113,94 @@ button:disabled {
 
 .navbar a:hover {
   scale: 1.1;
-  border-bottom: 2px dotted red;
+  border-bottom: 2px solid black;
 }
 
-/* Responsive Design */
+/* ===== Authentication Pages (Login & Register) ===== */
+.auth {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background: #f4f4f4;
+}
+
+/* ===== Authentication Container ===== */
+.auth-container {
+  width: 400px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* ===== Form Styling ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* ===== Buttons in Forms ===== */
+.auth-container button {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.auth-container button:hover {
+  background: #0056b3;
+}
+
+/* ===== Toggle Login/Register Button ===== */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.toggle-btn:hover {
+  text-decoration: underline;
+}
+
+/* ===== Error & Success Messages ===== */
+.error-text {
+  color: red;
+  font-size: 14px;
+}
+
+.success-text {
+  color: green;
+  font-size: 14px;
+}
+
+/* ===== Responsive Design ===== */
 @media (max-width: 900px) {
   .recipe-grid {
     grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
@@ -126,5 +210,14 @@ button:disabled {
 @media (max-width: 600px) {
   .recipe-grid {
     grid-template-columns: repeat(1, 1fr); /* 1 item per row on small screens */
+  }
+
+  .auth {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .auth-container {
+    width: 90%;
   }
 }
