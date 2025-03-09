@@ -10,7 +10,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("https://ey-gds-mern-recipe-app.onrender.com/recipes");
+        const response = await axios.get("https://ey-gds-mern-recipe-app-backend.onrender.com/recipes");
         setRecipes(response.data);
       } catch (err) {
         console.error("Error fetching recipes:", err);
@@ -21,7 +21,7 @@ export const Home = () => {
       if (!userID) return;
       try {
         const response = await axios.get(
-          `https://ey-gds-mern-recipe-app.onrender.com/recipes/savedRecipes/ids/${userID}`
+          `https://ey-gds-mern-recipe-app-backend.onrender.com/recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes || []);
       } catch (err) {
@@ -35,7 +35,7 @@ export const Home = () => {
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put("https://ey-gds-mern-recipe-app.onrender.com/recipes", {
+      const response = await axios.put("https://ey-gds-mern-recipe-app-backend.onrender.com/recipes", {
         recipeID,
         userID,
       });
