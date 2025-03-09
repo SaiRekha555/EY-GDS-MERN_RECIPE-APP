@@ -41,7 +41,7 @@ export const CreateRecipe = () => {
     try {
       await axios.post(
         "https://ey-gds-mern-recipe-app-backend.onrender.com/recipes",
-        { ...recipe },
+        { ...recipe, userOwner: userID }, // Ensure userOwner is included
         {
           headers: { authorization: cookies.access_token },
         }
