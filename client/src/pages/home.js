@@ -106,4 +106,3 @@ const recipeData = [
   }
 ]
 
-export default Home
