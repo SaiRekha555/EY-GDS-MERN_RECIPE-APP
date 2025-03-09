@@ -10,7 +10,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("https://ey-gds-mern-recipe-app-backend.onrender.com/recipes");
+        const response = await axios.get("https://ey-gds-mern-recipe-app.onrender.com/recipes");
         setRecipes(response.data);
       } catch (err) {
         console.error("Error fetching recipes:", err);
@@ -21,7 +21,7 @@ export const Home = () => {
       if (!userID) return; // Avoid calling if userID is not available
       try {
         const response = await axios.get(
-          `https://ey-gds-mern-recipe-app-backend.onrender.com/recipes/savedRecipes/ids/${userID}`
+          `https://ey-gds-mern-recipe-app.onrender.com/recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes || []);
       } catch (err) {
@@ -35,7 +35,7 @@ export const Home = () => {
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put("https://ey-gds-mern-recipe-app-backend.onrender.com/recipes", {
+      const response = await axios.put("https://ey-gds-mern-recipe-app.onrender.com/recipes", {
         recipeID,
         userID,
       });
@@ -48,21 +48,30 @@ export const Home = () => {
   const isRecipeSaved = (id) => savedRecipes.includes(id);
 
   return (
-    <div className="home-container">
+    <div>
       <h3 className="text-center">👨‍🍳 The Perfect Nest for Every Chef to Create, Share 🍽️</h3>
-      <div className="recipe-grid">
+      <div className="row row-cols-1 row-cols-md-3 g-4 m-3">
         {recipeData.map((recipe, index) => (
-          <div className="recipe-card" key={index}>
-            <img src={recipe.image} alt={recipe.title} />
-            <h5>{recipe.title}</h5>
-            <p>{recipe.description}</p>
-            <button
-              onClick={() => saveRecipe(recipe._id)}
-              disabled={isRecipeSaved(recipe._id)}
-              className="save-btn"
-            >
-              {isRecipeSaved(recipe._id) ? "Saved ✅" : "Save Recipe"}
-            </button>
+          <div className="col" key={index}>
+            <div className="card h-100 shadow-sm border-0 rounded-4">
+              <img
+                src={recipe.image}
+                className="card-img-top"
+                alt={recipe.title}
+                style={{ width: "100%", height: "250px", objectFit: "cover", borderRadius: "10px" }}
+              />
+              <div className="card-body text-center">
+                <h5 className="card-title">{recipe.title}</h5>
+                <p className="card-text">{recipe.description}</p>
+                <button
+                  onClick={() => saveRecipe(recipe._id)}
+                  disabled={isRecipeSaved(recipe._id)}
+                  className="btn btn-primary"
+                >
+                  {isRecipeSaved(recipe._id) ? "Saved ✅" : "Save Recipe"}
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -75,7 +84,7 @@ const recipeData = [
     _id: "1",
     title: "Veg Recipes 🥗",
     image: "https://3.imimg.com/data3/NX/GF/MY-9178041/veg-meal-250x250.png",
-    description: "Enjoy delicious, healthy, and vibrant vegetarian dishes! 🥦🍛",
+    description: "Enjoy delicious, healthy, and vibrant vegetarian dishes! Cook, Share & Savor the Goodness! 🥦🍛",
   },
   {
     _id: "2",
