@@ -12,6 +12,7 @@ app.use(cors());
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
 
+mongoose.set('strictQuery', false);
 mongoose.connect(
   "mongodb+srv://SaiRekhaKollapudi:Rekha123@cluster0.k2bnb.mongodb.net/rekha555?retryWrites=true&w=majority&appName=Cluster0",
   {
