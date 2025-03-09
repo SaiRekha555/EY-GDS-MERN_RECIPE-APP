@@ -51,26 +51,24 @@ export const Home = () => {
     <div className="container">
       <h3 className="text-center">👨‍🍳 The Perfect Nest for Every Chef to Create, Share 🍽️</h3>
       <div className="recipe-grid">
-        {recipes.length > 0 ? (
-          recipes.map((recipe) => (
-            <div className="recipe-card" key={recipe._id}>
-              <img src={recipe.imageUrl} alt={recipe.name} className="recipe-image" />
-              <h5>{recipe.name}</h5>
-              <p>{recipe.description}</p>
-              <button
-                onClick={() => saveRecipe(recipe._id)}
-                disabled={isRecipeSaved(recipe._id)}
-                className="btn btn-primary"
-              >
-                {isRecipeSaved(recipe._id) ? "Saved ✅" : "Save Recipe"}
-              </button>
-         </div>
+        {recipeData.map((recipe, index) => (
+          <div className="recipe-card" key={index}>
+            <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+            <h5>{recipe.title}</h5>
+            <p>{recipe.description}</p>
+            <button
+              onClick={() => saveRecipe(recipe._id)}
+              disabled={isRecipeSaved(recipe._id)}
+              className="btn btn-primary"
+            >
+              {isRecipeSaved(recipe._id) ? "Saved ✅" : "Save Recipe"}
+            </button>
+          </div>
         ))}
       </div>
     </div>
   );
 };
-
 
 const recipeData = [
   {
